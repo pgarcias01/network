@@ -25,6 +25,13 @@ def gerar_graph(got_net):
 
 # Read dataset (CSV)
 df = pd.read_csv('final_08_08.csv')
+df_1 = df[~df['Industries'].isna()]
+name_ind = dict(zip(df_1['name'],df_1['Industries']))
+for key in name_ind.keys():
+    x = name_ind[key]
+    x = x.split(',')
+    x = [item.strip() for item in x]
+    name_ind[key] = x
 
 # Set header title
 st.title('Network Graph Visualization')
